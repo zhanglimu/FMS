@@ -1,0 +1,804 @@
+{
+    "resultList":[
+        {
+            "tkId":"79841949",
+            "schemeState":4,
+            "tradeTime":"2017-06-07 00:02:18",
+            "tradePrice":15.21,
+            "winMoney":0,
+            "agentid":111
+        },
+        {
+            "tkId":"79868441",
+            "schemeState":4,
+            "tradeTime":"2017-06-07 00:02:29",
+            "tradePrice":6.83,
+            "winMoney":0,
+            "agentid":111
+        },
+        {
+            "tkId":"79855568",
+            "schemeState":5,
+            "tradeTime":"2017-06-07 00:02:43",
+            "tradePrice":21.25,
+            "winMoney":94.29,
+            "agentid":111
+        },
+        {
+            "tkId":"79843437",
+            "schemeState":4,
+            "tradeTime":"2017-06-07 00:04:31",
+            "tradePrice":22.14,
+            "winMoney":0,
+            "agentid":111
+        },
+        {
+            "tkId":"79851644",
+            "schemeState":5,
+            "tradeTime":"2017-06-07 00:05:04",
+            "tradePrice":138.97,
+            "winMoney":639.5,
+            "agentid":111
+        },
+        {
+            "tkId":"79845197",
+            "schemeState":4,
+            "tradeTime":"2017-06-07 00:06:45",
+            "tradePrice":20.13,
+            "winMoney":0,
+            "agentid":111
+        },
+        {
+            "tkId":"79869710",
+            "schemeState":4,
+            "tradeTime":"2017-06-07 00:08:19",
+            "tradePrice":7.11,
+            "winMoney":0,
+            "agentid":111
+        },
+        {
+            "tkId":"79851349",
+            "schemeState":5,
+            "tradeTime":"2017-06-07 00:09:09",
+            "tradePrice":9.96,
+            "winMoney":48.04,
+            "agentid":111
+        },
+        {
+            "tkId":"79823067",
+            "schemeState":4,
+            "tradeTime":"2017-06-07 00:09:09",
+            "tradePrice":50.13,
+            "winMoney":0,
+            "agentid":111
+        },
+        {
+            "tkId":"79850515",
+            "schemeState":4,
+            "tradeTime":"2017-06-07 00:09:25",
+            "tradePrice":10.74,
+            "winMoney":0,
+            "agentid":111
+        },
+        {
+            "tkId":"79935096",
+            "schemeState":4,
+            "tradeTime":"2017-06-07 00:10:00",
+            "tradePrice":68.76,
+            "winMoney":0,
+            "agentid":111
+        },
+        {
+            "tkId":"79795252",
+            "schemeState":4,
+            "tradeTime":"2017-06-07 00:10:09",
+            "tradePrice":7.91,
+            "winMoney":0,
+            "agentid":111
+        },
+        {
+            "tkId":"79795287",
+            "schemeState":4,
+            "tradeTime":"2017-06-07 00:10:37",
+            "tradePrice":7.91,
+            "winMoney":0,
+            "agentid":111
+        },
+        {
+            "tkId":"79850520",
+            "schemeState":4,
+            "tradeTime":"2017-06-07 00:11:40",
+            "tradePrice":11.28,
+            "winMoney":0,
+            "agentid":111
+        },
+        {
+            "tkId":"79896705",
+            "schemeState":4,
+            "tradeTime":"2017-06-07 00:11:50",
+            "tradePrice":136.7,
+            "winMoney":0,
+            "agentid":111
+        },
+        {
+            "tkId":"79949405",
+            "schemeState":4,
+            "tradeTime":"2017-06-07 00:11:55",
+            "tradePrice":7.12,
+            "winMoney":0,
+            "agentid":111
+        },
+        {
+            "tkId":"79873005",
+            "schemeState":4,
+            "tradeTime":"2017-06-07 00:11:59",
+            "tradePrice":4.82,
+            "winMoney":0,
+            "agentid":111
+        },
+        {
+            "tkId":"79847308",
+            "schemeState":4,
+            "tradeTime":"2017-06-07 00:12:03",
+            "tradePrice":1.57,
+            "winMoney":0,
+            "agentid":111
+        },
+        {
+            "tkId":"79844692",
+            "schemeState":4,
+            "tradeTime":"2017-06-07 00:12:20",
+            "tradePrice":4.49,
+            "winMoney":0,
+            "agentid":111
+        },
+        {
+            "tkId":"79870897",
+            "schemeState":4,
+            "tradeTime":"2017-06-07 00:12:30",
+            "tradePrice":2.15,
+            "winMoney":0,
+            "agentid":111
+        },
+        {
+            "tkId":"79899124",
+            "schemeState":4,
+            "tradeTime":"2017-06-07 00:12:32",
+            "tradePrice":10.03,
+            "winMoney":0,
+            "agentid":111
+        },
+        {
+            "tkId":"79943685",
+            "schemeState":4,
+            "tradeTime":"2017-06-07 00:12:41",
+            "tradePrice":23.27,
+            "winMoney":0,
+            "agentid":111
+        },
+        {
+            "tkId":"79863994",
+            "schemeState":5,
+            "tradeTime":"2017-06-07 00:13:26",
+            "tradePrice":144.05,
+            "winMoney":720.44,
+            "agentid":111
+        },
+        {
+            "tkId":"79936136",
+            "schemeState":4,
+            "tradeTime":"2017-06-07 00:13:34",
+            "tradePrice":25.18,
+            "winMoney":0,
+            "agentid":111
+        },
+        {
+            "tkId":"79853840",
+            "schemeState":4,
+            "tradeTime":"2017-06-07 00:13:47",
+            "tradePrice":18.08,
+            "winMoney":0,
+            "agentid":111
+        },
+        {
+            "tkId":"79892346",
+            "schemeState":4,
+            "tradeTime":"2017-06-07 00:14:06",
+            "tradePrice":25.5,
+            "winMoney":0,
+            "agentid":111
+        },
+        {
+            "tkId":"79854555",
+            "schemeState":4,
+            "tradeTime":"2017-06-07 00:14:11",
+            "tradePrice":2,
+            "winMoney":0,
+            "agentid":111
+        },
+        {
+            "tkId":"79776328",
+            "schemeState":5,
+            "tradeTime":"2017-06-07 00:14:40",
+            "tradePrice":30.6,
+            "winMoney":3.33,
+            "agentid":111
+        },
+        {
+            "tkId":"79945467",
+            "schemeState":4,
+            "tradeTime":"2017-06-07 00:15:14",
+            "tradePrice":13.82,
+            "winMoney":0,
+            "agentid":111
+        },
+        {
+            "tkId":"79949854",
+            "schemeState":4,
+            "tradeTime":"2017-06-07 00:15:39",
+            "tradePrice":6.03,
+            "winMoney":0,
+            "agentid":111
+        },
+        {
+            "tkId":"79861376",
+            "schemeState":4,
+            "tradeTime":"2017-06-07 00:16:07",
+            "tradePrice":22.26,
+            "winMoney":0,
+            "agentid":111
+        },
+        {
+            "tkId":"79843783",
+            "schemeState":4,
+            "tradeTime":"2017-06-07 00:16:09",
+            "tradePrice":10.25,
+            "winMoney":0,
+            "agentid":111
+        },
+        {
+            "tkId":"79885311",
+            "schemeState":4,
+            "tradeTime":"2017-06-07 00:16:26",
+            "tradePrice":10.77,
+            "winMoney":0,
+            "agentid":111
+        },
+        {
+            "tkId":"79833999",
+            "schemeState":4,
+            "tradeTime":"2017-06-07 00:16:37",
+            "tradePrice":0.11,
+            "winMoney":0,
+            "agentid":111
+        },
+        {
+            "tkId":"79884865",
+            "schemeState":4,
+            "tradeTime":"2017-06-07 00:17:14",
+            "tradePrice":11.28,
+            "winMoney":0,
+            "agentid":111
+        },
+        {
+            "tkId":"79880295",
+            "schemeState":4,
+            "tradeTime":"2017-06-07 00:17:41",
+            "tradePrice":4.14,
+            "winMoney":0,
+            "agentid":111
+        },
+        {
+            "tkId":"79934891",
+            "schemeState":4,
+            "tradeTime":"2017-06-07 00:18:15",
+            "tradePrice":224.12,
+            "winMoney":0,
+            "agentid":111
+        },
+        {
+            "tkId":"79797774",
+            "schemeState":4,
+            "tradeTime":"2017-06-07 00:18:17",
+            "tradePrice":3.76,
+            "winMoney":0,
+            "agentid":111
+        },
+        {
+            "tkId":"79903949",
+            "schemeState":4,
+            "tradeTime":"2017-06-07 00:18:27",
+            "tradePrice":37.94,
+            "winMoney":0,
+            "agentid":111
+        },
+        {
+            "tkId":"79858906",
+            "schemeState":4,
+            "tradeTime":"2017-06-07 00:18:27",
+            "tradePrice":1.33,
+            "winMoney":0,
+            "agentid":111
+        },
+        {
+            "tkId":"79942253",
+            "schemeState":5,
+            "tradeTime":"2017-06-07 00:18:47",
+            "tradePrice":3.16,
+            "winMoney":570.55,
+            "agentid":111
+        },
+        {
+            "tkId":"79943959",
+            "schemeState":5,
+            "tradeTime":"2017-06-07 00:18:47",
+            "tradePrice":45.5,
+            "winMoney":520,
+            "agentid":111
+        },
+        {
+            "tkId":"79892987",
+            "schemeState":4,
+            "tradeTime":"2017-06-07 00:18:52",
+            "tradePrice":44.43,
+            "winMoney":0,
+            "agentid":111
+        },
+        {
+            "tkId":"79822067",
+            "schemeState":4,
+            "tradeTime":"2017-06-07 00:18:52",
+            "tradePrice":4.07,
+            "winMoney":0,
+            "agentid":111
+        },
+        {
+            "tkId":"79940869",
+            "schemeState":5,
+            "tradeTime":"2017-06-07 00:18:57",
+            "tradePrice":3.14,
+            "winMoney":570.55,
+            "agentid":111
+        },
+        {
+            "tkId":"79949429",
+            "schemeState":5,
+            "tradeTime":"2017-06-07 00:19:00",
+            "tradePrice":17.14,
+            "winMoney":268.26,
+            "agentid":111
+        },
+        {
+            "tkId":"79940887",
+            "schemeState":4,
+            "tradeTime":"2017-06-07 00:19:00",
+            "tradePrice":0.12,
+            "winMoney":0,
+            "agentid":111
+        },
+        {
+            "tkId":"79940613",
+            "schemeState":4,
+            "tradeTime":"2017-06-07 00:19:05",
+            "tradePrice":2.23,
+            "winMoney":0,
+            "agentid":111
+        },
+        {
+            "tkId":"79815145",
+            "schemeState":4,
+            "tradeTime":"2017-06-07 00:19:10",
+            "tradePrice":35.68,
+            "winMoney":0,
+            "agentid":111
+        },
+        {
+            "tkId":"79943062",
+            "schemeState":4,
+            "tradeTime":"2017-06-07 00:19:13",
+            "tradePrice":3.31,
+            "winMoney":0,
+            "agentid":111
+        },
+        {
+            "tkId":"79913251",
+            "schemeState":5,
+            "tradeTime":"2017-06-07 00:19:13",
+            "tradePrice":2.86,
+            "winMoney":518.85,
+            "agentid":111
+        },
+        {
+            "tkId":"79905021",
+            "schemeState":5,
+            "tradeTime":"2017-06-07 00:19:19",
+            "tradePrice":0.56,
+            "winMoney":102.45,
+            "agentid":111
+        },
+        {
+            "tkId":"79903721",
+            "schemeState":4,
+            "tradeTime":"2017-06-07 00:19:25",
+            "tradePrice":1.4,
+            "winMoney":0,
+            "agentid":111
+        },
+        {
+            "tkId":"79943090",
+            "schemeState":5,
+            "tradeTime":"2017-06-07 00:19:26",
+            "tradePrice":22.19,
+            "winMoney":468,
+            "agentid":111
+        },
+        {
+            "tkId":"79849701",
+            "schemeState":5,
+            "tradeTime":"2017-06-07 00:19:28",
+            "tradePrice":12.41,
+            "winMoney":144,
+            "agentid":111
+        },
+        {
+            "tkId":"79943098",
+            "schemeState":4,
+            "tradeTime":"2017-06-07 00:19:40",
+            "tradePrice":20.58,
+            "winMoney":0,
+            "agentid":111
+        },
+        {
+            "tkId":"79899780",
+            "schemeState":4,
+            "tradeTime":"2017-06-07 00:19:45",
+            "tradePrice":1.3,
+            "winMoney":0,
+            "agentid":111
+        },
+        {
+            "tkId":"79943150",
+            "schemeState":5,
+            "tradeTime":"2017-06-07 00:19:50",
+            "tradePrice":18.23,
+            "winMoney":390,
+            "agentid":111
+        },
+        {
+            "tkId":"79899665",
+            "schemeState":5,
+            "tradeTime":"2017-06-07 00:20:06",
+            "tradePrice":1.45,
+            "winMoney":271.8,
+            "agentid":111
+        },
+        {
+            "tkId":"79944654",
+            "schemeState":4,
+            "tradeTime":"2017-06-07 00:20:16",
+            "tradePrice":6.86,
+            "winMoney":0,
+            "agentid":111
+        },
+        {
+            "tkId":"79880663",
+            "schemeState":4,
+            "tradeTime":"2017-06-07 00:20:16",
+            "tradePrice":2.38,
+            "winMoney":0,
+            "agentid":111
+        },
+        {
+            "tkId":"79852384",
+            "schemeState":4,
+            "tradeTime":"2017-06-07 00:20:28",
+            "tradePrice":2.53,
+            "winMoney":0,
+            "agentid":111
+        },
+        {
+            "tkId":"79896371",
+            "schemeState":4,
+            "tradeTime":"2017-06-07 00:20:36",
+            "tradePrice":19.47,
+            "winMoney":0,
+            "agentid":111
+        },
+        {
+            "tkId":"79826800",
+            "schemeState":4,
+            "tradeTime":"2017-06-07 00:20:45",
+            "tradePrice":43.5,
+            "winMoney":0,
+            "agentid":111
+        },
+        {
+            "tkId":"79943754",
+            "schemeState":5,
+            "tradeTime":"2017-06-07 00:21:12",
+            "tradePrice":42.6,
+            "winMoney":520,
+            "agentid":111
+        },
+        {
+            "tkId":"79827956",
+            "schemeState":4,
+            "tradeTime":"2017-06-07 00:21:26",
+            "tradePrice":110.7,
+            "winMoney":0,
+            "agentid":111
+        },
+        {
+            "tkId":"79826926",
+            "schemeState":4,
+            "tradeTime":"2017-06-07 00:22:53",
+            "tradePrice":8.11,
+            "winMoney":0,
+            "agentid":111
+        },
+        {
+            "tkId":"79937401",
+            "schemeState":4,
+            "tradeTime":"2017-06-07 00:22:58",
+            "tradePrice":2.83,
+            "winMoney":0,
+            "agentid":111
+        },
+        {
+            "tkId":"79934943",
+            "schemeState":4,
+            "tradeTime":"2017-06-07 00:23:30",
+            "tradePrice":28.69,
+            "winMoney":0,
+            "agentid":111
+        },
+        {
+            "tkId":"79871420",
+            "schemeState":4,
+            "tradeTime":"2017-06-07 00:24:20",
+            "tradePrice":70.68,
+            "winMoney":0,
+            "agentid":111
+        },
+        {
+            "tkId":"79935078",
+            "schemeState":4,
+            "tradeTime":"2017-06-07 00:24:42",
+            "tradePrice":1.58,
+            "winMoney":0,
+            "agentid":111
+        },
+        {
+            "tkId":"79932256",
+            "schemeState":4,
+            "tradeTime":"2017-06-07 00:24:45",
+            "tradePrice":51.94,
+            "winMoney":0,
+            "agentid":111
+        },
+        {
+            "tkId":"79801146",
+            "schemeState":4,
+            "tradeTime":"2017-06-07 00:26:33",
+            "tradePrice":6.46,
+            "winMoney":0,
+            "agentid":111
+        },
+        {
+            "tkId":"79944689",
+            "schemeState":4,
+            "tradeTime":"2017-06-07 00:26:41",
+            "tradePrice":37.01,
+            "winMoney":0,
+            "agentid":111
+        },
+        {
+            "tkId":"79931109",
+            "schemeState":4,
+            "tradeTime":"2017-06-07 00:26:42",
+            "tradePrice":3.48,
+            "winMoney":0,
+            "agentid":111
+        },
+        {
+            "tkId":"79871597",
+            "schemeState":4,
+            "tradeTime":"2017-06-07 00:26:44",
+            "tradePrice":489.28,
+            "winMoney":0,
+            "agentid":111
+        },
+        {
+            "tkId":"79776875",
+            "schemeState":4,
+            "tradeTime":"2017-06-07 00:26:47",
+            "tradePrice":57.9,
+            "winMoney":0,
+            "agentid":111
+        },
+        {
+            "tkId":"79937436",
+            "schemeState":4,
+            "tradeTime":"2017-06-07 00:26:49",
+            "tradePrice":0.42,
+            "winMoney":0,
+            "agentid":111
+        },
+        {
+            "tkId":"79947098",
+            "schemeState":5,
+            "tradeTime":"2017-06-07 00:27:00",
+            "tradePrice":7.76,
+            "winMoney":188.65,
+            "agentid":111
+        },
+        {
+            "tkId":"79939598",
+            "schemeState":4,
+            "tradeTime":"2017-06-07 00:27:11",
+            "tradePrice":1.61,
+            "winMoney":0,
+            "agentid":111
+        },
+        {
+            "tkId":"79840496",
+            "schemeState":4,
+            "tradeTime":"2017-06-07 00:27:22",
+            "tradePrice":79.12,
+            "winMoney":0,
+            "agentid":111
+        },
+        {
+            "tkId":"79848533",
+            "schemeState":4,
+            "tradeTime":"2017-06-07 00:27:25",
+            "tradePrice":2.94,
+            "winMoney":0,
+            "agentid":111
+        },
+        {
+            "tkId":"79935919",
+            "schemeState":4,
+            "tradeTime":"2017-06-07 00:28:19",
+            "tradePrice":1.65,
+            "winMoney":0,
+            "agentid":111
+        },
+        {
+            "tkId":"79891352",
+            "schemeState":4,
+            "tradeTime":"2017-06-07 00:28:42",
+            "tradePrice":50.4,
+            "winMoney":0,
+            "agentid":111
+        },
+        {
+            "tkId":"79886321",
+            "schemeState":4,
+            "tradeTime":"2017-06-07 00:30:03",
+            "tradePrice":210.44,
+            "winMoney":0,
+            "agentid":111
+        },
+        {
+            "tkId":"79931209",
+            "schemeState":4,
+            "tradeTime":"2017-06-07 00:30:41",
+            "tradePrice":1.31,
+            "winMoney":0,
+            "agentid":111
+        },
+        {
+            "tkId":"79893297",
+            "schemeState":5,
+            "tradeTime":"2017-06-07 00:30:46",
+            "tradePrice":42.91,
+            "winMoney":19.42,
+            "agentid":111
+        },
+        {
+            "tkId":"79946493",
+            "schemeState":4,
+            "tradeTime":"2017-06-07 00:31:38",
+            "tradePrice":0.11,
+            "winMoney":0,
+            "agentid":111
+        },
+        {
+            "tkId":"79893860",
+            "schemeState":4,
+            "tradeTime":"2017-06-07 00:31:49",
+            "tradePrice":9.58,
+            "winMoney":0,
+            "agentid":111
+        },
+        {
+            "tkId":"79936087",
+            "schemeState":4,
+            "tradeTime":"2017-06-07 00:31:55",
+            "tradePrice":8.13,
+            "winMoney":0,
+            "agentid":111
+        },
+        {
+            "tkId":"79841222",
+            "schemeState":4,
+            "tradeTime":"2017-06-07 00:31:58",
+            "tradePrice":8.92,
+            "winMoney":0,
+            "agentid":111
+        },
+        {
+            "tkId":"79932543",
+            "schemeState":4,
+            "tradeTime":"2017-06-07 00:32:00",
+            "tradePrice":1.31,
+            "winMoney":0,
+            "agentid":111
+        },
+        {
+            "tkId":"79855206",
+            "schemeState":4,
+            "tradeTime":"2017-06-07 00:32:15",
+            "tradePrice":12.56,
+            "winMoney":0,
+            "agentid":111
+        },
+        {
+            "tkId":"79937929",
+            "schemeState":4,
+            "tradeTime":"2017-06-07 00:32:48",
+            "tradePrice":5.93,
+            "winMoney":0,
+            "agentid":111
+        },
+        {
+            "tkId":"79895621",
+            "schemeState":5,
+            "tradeTime":"2017-06-07 00:32:59",
+            "tradePrice":11.05,
+            "winMoney":46.8,
+            "agentid":111
+        },
+        {
+            "tkId":"79892343",
+            "schemeState":4,
+            "tradeTime":"2017-06-07 00:33:42",
+            "tradePrice":11.56,
+            "winMoney":0,
+            "agentid":111
+        },
+        {
+            "tkId":"79830894",
+            "schemeState":4,
+            "tradeTime":"2017-06-07 00:34:29",
+            "tradePrice":1.81,
+            "winMoney":0,
+            "agentid":111
+        },
+        {
+            "tkId":"79887865",
+            "schemeState":4,
+            "tradeTime":"2017-06-07 00:34:56",
+            "tradePrice":209.08,
+            "winMoney":0,
+            "agentid":111
+        },
+        {
+            "tkId":"79953567",
+            "schemeState":2,
+            "tradeTime":"2017-06-07 00:35:33",
+            "tradePrice":0.47,
+            "winMoney":0,
+            "agentid":111
+        },
+        {
+            "tkId":"79858074",
+            "schemeState":4,
+            "tradeTime":"2017-06-07 00:35:35",
+            "tradePrice":358.86,
+            "winMoney":0,
+            "agentid":111
+        }
+    ]
+}

@@ -1,0 +1,1654 @@
+2001请求的url=http://192.168.1.5:8083/errorTicket/getErrorTickets?page=1&size=6
+
+http://192.168.1.209:8080/account/errorTicket/getErrorTickets?page=1&size=6        2017-05-8
+
+page 和size都是分页参数
+
+返回的json数据 例
+
+[{"id":138,"tkId":"DD20170328155309100001","tradeState":0,"agentId":0,"tradeTime":"2017-03-29 12:56:45","tradePrice":15.35,"recyclePrice":null,"winMoney":45,"state":0,"queryTime":null},
+
+{"id":139,"tkId":"DD20170328155309100002","tradeState":0,"agentId":0,"tradeTime":"2017-03-29 12:56:45","tradePrice":15.35,"recyclePrice":null,"winMoney":45,"state":0,"queryTime":null},
+
+{"id":140,"tkId":"DD20170328155309100001","tradeState":0,"agentId":0,"tradeTime":"2017-03-29 12:56:45","tradePrice":15.35,"recyclePrice":null,"winMoney":45,"state":0,"queryTime":"2017-04-11 17:44:29"}]
+
+
+页面展示
+
+id，tkId，tradeState，agentId，tradeTime，tradePrice，recyclePrice，winMoney，state，queryTime
+
+将这些字段信息展示出来；
+
+其中tradeState的值可能如下
+
+
+
+0 数据库无此票第三方有此票				
+
+1 数据库有此票第三方无此票				
+
+2 对方还在交易中					
+
+3 对方显示转让完成已中奖，我们显示未中奖或alive		 		
+
+5 对方显示中奖已回收，我们显示未回收 						
+
+6 对方方案未交易，我们有票
+
+
+其中如果state=1，代表已处理；页面显示已处理，已处理将不能改动数据  
+
+state=0，代表未处理。页面应显示未处理，点击之后根据tradeState的值，出现提示框，调用后台接口处理
+
+如果 tradeState=2   			/errorTicket/refuseTicket  拒票
+
+     tradeState=0  		 	/errorTicket/acceptTicket  收票
+
+     tradeState=6 tradeState=1   	/errorTicket/cancelTicket  取消票
+
+     tradeState=5 		     	/errorTicket/recycleTicket 回收票
+
+     tradeState=3 			先不做判断就显示未处理
+
+
+提示框点击确定后：
+
+拒票处理成功：2001；
+
+拒票处理失败：2002
+
+收票处理成功：1001；
+
+收票处理失败：1002
+
+6229 回收失败 
+
+6230 回收成功 
+
+6331 取消订单的请求提交失败 
+
+6332 取消订单的请求提交成功 
+ 
+errorTicket.html 页面需要改动的地方
+
+原有接口 
+
+1  account/errorTicket/getErrorTickets?page=&size=
+
+需改为
+
+http://192.168.1.5:8083/account/errorTicket/getErrorTickets?size=10&startDate=2017-5-22&endDate=2017-5-24&page=1
+
+多加了起止时间 
+
+起止时间默认为 结束时间为当天 开始时间为当天的前一天
+
+2  分页时用到的数据总数
+
+表示在该时间段 查到票的总数
+
+原有接口   account/errorTicket/amount
+
+需改为 account/errorTicket/amount?startDate=&endDate=
+
+多加了起止时间
+
+这个起止时间获取的时候 1 接口中 时间要一致 
+
+
+--------Allup：
+接口
+
+http://192.168.1.209:8083/account/dailyAllup/queryAll?year=2017&month=6&day=17
+
+//总合计
+
+{"total":{
+"local_m":0,
+"product":"合计",
+"totalInvestment":0.0,
+"invest":0.0,
+"totalPrice":0.0,
+"payoutRate":0.0,
+"payout":0.0,
+"winprice":0.0,
+"average":0.0
+},
+
+
+//local_m 为关数 0 代表 此玩法总合计
+
+//totalInvestment 原始投注额
+
+//invest 投注额
+
+//totalPrice返奖金额
+
+//payoutRate 返奖率
+
+//payout 盈余金额
+
+//winprice  average 无意义
+
+导出 http://192.168.1.209:8083/account/dailyAllupExcel/queryAll?year=2017&month=6&day=17
+
+返回结果
+
+{"result":
+
+      {"resultCode":0,
+
+      "resultMsg":null},
+
+ "data":null
+
+}
+
+可能结果如下
+
+resultCode=0   resultMsg ="fail"
+
+resultCode=1   resultMsg ="success"
+
+
+--------渠道的部分接口： channel：
+
+1.查询接口
+
+http://192.168.1.209:8083/account//channelStatistics/queryAll?year=2017&month=5&day=3
+
+'http://192.168.1.5:8083/account//channelStatistics/queryAll?year='+year+'&month='+month+'&day='+day
+
+year month day 均为参数 传参过程中
+
+错误样式
+
+("2017", " ", "")     ("2017", "2", " ")        
+
+正确样式
+
+("2017", "2", "")     ("2017", "", "")
+
+不可以有空格，否则出现异常
+
+返回json数据如下
+
+{"agentInfoModels":{                 此处有改动原为channelList
+
+"agentName":"101_CC", 		//渠道名
+
+"agentCode":"101"
+
+"agentId":101,         		//渠道编号
+
+"userAmount":2,			//注册用户数
+
+"orderAmount":224,		//订单数
+
+"updateflag":0,			//用于更新操作
+
+"tradePrice":11289.75,		//交易额
+
+"winMoney":0.0,			//最大中奖额
+
+"profit":-11289.75,      	//盈余
+
+"profitability":-112.8975,	//盈利率
+
+"prestore":-6046.33,    	//预存款
+
+"url":"",			//渠道url
+
+"password":"0",			//密码
+
+"prestoreAlarm":0.0,		//预存款报警
+
+"agentSell":0}			//开停售
+
+],
+
+"model":{
+
+"agentName":null,
+
+"agentId":0,
+
+"userAmount":0,
+
+"orderAmount":0,
+
+"updateflag":0,
+
+"tradePrice":11289.75,		//总交易额
+
+"winMoney":0.0,
+
+"profit":-11289.75, 		//总盈余
+
+"profitability":0.0,
+
+"prestore":-6046.33, 		//总预存
+
+"url":null,
+
+"password":null,
+
+"prestoreAlarm":0.0,
+
+"agentSell":0
+
+}}
+
+
+http://192.168.1.209:8083/account//channelStatistics/test?agentName=101_CC&agentId=101&userAmount=2&orderAmount=224&updateflag=1&tradePrice=0&winMoney=0&profit=0&profitability=0&prestore=0&url=0&passward=0&prestoreAlarm=0&agentSell=0&agentCode=101
+
+Model 部分数据为空 均为正常，model用于封装总的统计数据
+
+（某日期下无数据，正常应全部显示为0 ）
+
+2.更新接口
+
+http://192.168.1.209:8083/account//channelStatistics/update
+
+因为渠道页面 能点击更新的有三处 
+1 渠道预存款
+ 2 渠道预存款报警
+ 3 渠道基本信息
+
+参数判断如下
+
+根据上边的json数据中的 updateflag 进行赋值 
+
+1 渠道预存款
+ 2 渠道预存款报警
+ 3 渠道基本信息 
+
+并将页面上更新后的数据 一并返回后台 
+
+此处要求 更改的所有信息均要返回给后台
+
+返回结果如下
+
+{"result":
+
+      {"resultCode":0,
+
+      "resultMsg":null},
+
+ "data":null
+
+}
+
+resultCode=0   resultMsg =”update fail”
+
+resultCode=1   resultMsg =”update success”
+
+3 添加接口
+
+http://192.168.1.209:8083/account//channelStatistics/add
+
+返回结果如下
+
+{"result":
+
+      {"resultCode":0,
+
+      "resultMsg":null},
+
+ "data":null
+
+}
+
+可能结果如下
+
+resultCode=0   resultMsg ="渠道编码，名称，编号必须填"
+
+resultCode=0   resultMsg ="该渠道号已存在"
+
+resultCode=0   resultMsg ="预存额必须大于预存额报警线"
+
+resultCode=0   resultMsg =”add fail”
+
+resultCode=1   resultMsg =”add success”
+
+4 全部停售 或 全部开售 接口
+
+http://192.168.1.209:8083/account/channelStatistics/updateSellAll
+
+需要返回一个标示 标示即为model的agentsell 判断 是全部开售 还是全部停售
+
+变色和自动刷新
+
+ 返回结果如下
+
+{"result":
+
+      {"resultCode":0,
+
+      "resultMsg":null},
+
+ "data":null
+
+}
+
+可能结果如下
+
+resultCode=0   resultMsg ="fail"
+
+resultCode=1   resultMsg ="success"
+
+5 开停售 接口
+
+http://192.168.1.209:8083/account/channelStatistics/updateSell
+
+要将 该渠道信息返回 通过agentsell 的值判断是 开售 或停售
+
+赋值开售1，停售0，
+
+ 返回结果如下
+
+{"result":
+
+      {"resultCode":0,
+
+      "resultMsg":null},
+
+ "data":null
+
+}
+
+可能结果如下
+
+resultCode=0   resultMsg ="fail"
+
+resultCode=1   resultMsg ="success"
+
+ 6 导出excel表接口
+
+http://192.168.1.209:8083/account/channelStatistics/channelStatisticsExcel?year=2017&month=5&day=3
+
+参数意义同上
+
+ 返回结果如下
+
+{"result":
+
+      {"resultCode":0,
+
+      "resultMsg":null},
+
+ "data":null
+
+}
+
+可能结果如下
+
+resultCode=0   resultMsg ="fail"
+
+resultCode=1   resultMsg ="success"
+
+7 预存额明细接口
+
+http://192.168.1.209:8083/account/channelStatistics/queryPreStoreDetail 
+
+参数类型为AgentInfoModel 即页面json串
+
+返回结果如下
+
+{"agentInfoDetails":
+
+[
+
+	{"id":51,
+
+	"agentName":"测试专用渠道",
+
+	"agentCode":"101",
+	
+	"oldPreStore":-75643.24,
+
+	"newPreStore":-74643.24,
+
+	"preStoreDetail":存款:预存额由-75643.24增加了1000.0",
+
+	"operateTime":"2017-04-07 17:19:01"},
+
+	{"id":52,"agentName":"测试专用渠道",
+
+	"agentCode":"101",
+
+	"oldPreStore":-74643.24,
+
+	"newPreStore":-74543.24,
+
+	"preStoreDetail":"存款:预存额由-74643.24增加了100.0",
+
+	"operateTime":"2017-04-07 17:19:50"}
+
+]}
+
+--------breakdown接口：
+1.查询接口
+http://192.168.1.209:8083/account/dailyFinancialDetail/queryAll?year=2017&month=5&day=16
+
+http://192.168.1.5:8083/account/dailyFinancialDetail/queryAll?year=&month=&day=
+
+year month day 均为参数 传参过程中
+
+错误样式
+
+("2017", " ", "")     ("2017", "2", " ")        
+
+正确样式
+
+("2017", "2", "")     ("2017", "", "")
+
+不可以有空格，否则出现异常
+
+返回的json大致如下
+
+{"modelList":
+
+[{
+
+"column1":null,   				无意义 用于下载excel格式
+
+"column2":null,					无意义 用于下载excel格式
+
+"product":"HAD", 				玩法
+
+"totalInvestment":160.0, 			合计原始投注额 
+
+"invest":60.0,  				合计交易额
+
+"totalPrice":2922.5,      			合计中奖额
+
+"payoutRate":86.91086398631307, 		合计盈利率
+
+"totalInvestmentFsgl":60.0,     		单关原始投注额 
+
+"investFsgl":60.0,             			单关交易额
+
+"totalPriceFsgl":210.0,				单关中奖额
+
+"payoutRateFsgl":71.42857142857143, 		单关盈利率
+
+"winpriceFsgl":60.0,				单关中奖交易额
+
+"averageFsgl":3.5,				单关平均奖金
+
+"totalInvestmentAllup":60.0,			串关原始投注额 
+
+"investAllup":257.66,				串关交易额
+
+"totalPriceAllup":2572.5,			串关中奖额
+
+"payoutRateAllup":89.98406219630711,		串关盈利率
+
+"totalInvestmentLevel0":40.0,         		0关原始投注额
+
+investLevel0":64.87,				0关交易额
+
+"totalPriceLevel0":0.0,  			0关中奖额
+
+"payoutRateLevel0":0.0},			0关盈利率
+
+..................以下数据 意义类似 区别在于玩法不同 .........
+
+合计
+
+"FBtotal":
+
+{"column1":null,   				无意义 用于下载excel格式
+
+"column2":null,					无意义 用于下载excel格式
+
+"product":null,
+
+"totalInvestment":160.0,// 
+
+"invest":60.0,
+
+"totalPrice":2922.5,
+
+"payoutRate":86.91086398631307,
+
+"totalInvestmentFsgl":60.0,
+
+"investFsgl":60.0,
+
+"totalPriceFsgl":210.0,
+
+"payoutRateFsgl":71.42857142857143,
+
+"winpriceFsgl":60.0,
+
+"averageFsgl":3.5,
+
+"totalInvestmentAllup":60.0,
+
+"investAllup":257.66,
+
+"totalPriceAllup":2572.5,
+
+"payoutRateAllup":89.98406219630711,
+
+"totalInvestmentLevel0":40.0,
+
+"investLevel0":64.87,
+
+"totalPriceLevel0":0.0,
+
+"payoutRateLevel0":0.0}}
+
+
+当日合计 位于页面底部 用于统计当日 FB足球 与BK篮球
+
+目前 没有篮球数据 其数据应与 数据相同
+
+{"total":
+
+{"column1":null,
+
+"column2":null,
+
+"product":null,
+
+"totalInvestment":160.0,
+
+"invest":382.53000000000003,
+
+"totalPrice":2922.5,
+
+"payoutRate":663.992366611769,
+
+"totalInvestmentFsgl":60.0,
+
+"investFsgl":60.0,
+
+"totalPriceFsgl":210.0,
+
+"payoutRateFsgl":250.0,
+
+"winpriceFsgl":60.0,
+
+"averageFsgl":3.5,
+
+"totalInvestmentAllup":60.0,
+
+"investAllup":257.66,
+
+"totalPriceAllup":2572.5,
+
+"payoutRateAllup":898.4087557245983,
+
+"totalInvestmentLevel0":40.0,
+
+"investLevel0":64.87,
+
+"totalPriceLevel0":140.0,
+
+"payoutRateLevel0":115.81624788037612},
+
+
+2 导出excel 接口
+
+http://192.168.1.5:8083/account/dailyFinancialDetail//dailyFinancialDetailExcel?year=&month=&day=
+
+返回结果如下
+
+{"result":
+
+      {"resultCode":0,
+
+      "resultMsg":null},
+
+ "data":null
+
+}
+
+可能结果如下
+
+resultCode=0   resultMsg ="fail"
+
+resultCode=1   resultMsg ="success"
+
+
+--------single接口：
+
+简单介绍 daily single 单关赛事明细
+
+通过时间查询 order_ticket_detail 和 order_ticket_detail_his 的票的集合 再通过 该两表中 sid 与 后两表中 sid （关联）
+
+查询出 Order_ticket_matches 和 Order_ticket_matches_his 中比赛信息集合
+
+再通过 比赛信息集合 中 match_code 与week_id 查询
+
+match_info 与 match_info_his 查询出页面部分结果 
+
+1查询接口
+
+http://192.168.1.5:8083/account/detailSGL/queryAll?year=2017&month=6&day=2
+
+year month day 均为参数 传参过程中
+
+错误样式
+("2017", " ", "")     ("2017", "2", " ")        
+正确样式
+("2017", "2", "")     ("2017", "", "")
+
+不可以有空格，否则出现异常
+
+返回的json大致如下
+
+{"total":		    			合计						
+
+{"match_code":null,
+
+"match_date":null,
+
+"match_league":null,
+
+"home_team":null,
+
+"away_team":null,
+
+"home_score_half":null,
+
+"away_score_half":null,
+
+"home_score":null,
+
+"away_score":null,
+
+"totalInvestmentHAD":240.0,	        HAD总计原始投注额
+
+"investHAD":744.95,			HAD总计投注额
+
+"totalPriceHAD":680.0,			HAD总计返奖金额
+
+"payoutRateHAD":-8.719,			HAD 总计盈利率
+
+"winpriceHAD":278.84000000000003,  	HAD总计中奖额
+
+"averageHAD":2.439,			HAD总计平均固定中奖金额
+
+"totalInvestmentHHAD":0.0,		HHAD总计原始投注额
+
+"investHHAD":0.0,			HHAD总计投注额
+
+"totalPriceHHAD":0.0			HHAD总计返奖金额
+
+"payoutRateHHAD":0.0,
+
+"winpriceHHAD":0.0,
+
+"averageHHAD":0.0，
+
+"totalInvestmentHAFU":0.0,
+
+"investHAFU":0.0,
+
+"totalPriceHAFU":0.0,
+
+"payoutRateHAFU":0.0,
+
+"winpriceHAFU":0.0,
+
+"averageHAFU":0.0,
+
+"totalInvestmentTTG":0.0,
+
+"investTTG":0.0,
+
+"totalPriceTTG":0.0,
+
+"payoutRateTTG":0.0,
+
+"winpriceTTG":0.0,
+
+"averageTTG":0.0,
+
+"totalInvestmentCRS":20.0,
+
+"investCRS":25.0,
+
+"totalPriceCRS":0.0,
+
+"payoutRateCRS":-100.0,
+
+"winpriceCRS":0.0,
+
+"averageCRS":0.0},
+
+
+"modelList":
+
+[{"match_code":"1011",		         比赛编号				
+
+"match_date":"2017-05-30 08:15:00",	 比赛时间
+
+"match_league":"APL",			 联赛
+
+"home_team":"萨斯菲",               	 主队
+
+"away_team":"基尔梅斯",			 客队
+
+"home_score_half":"0",                	 主队半场分数
+
+"away_score_half":"0",			 客队半场分数
+
+"home_score":"0",			 主队分数
+
+"away_score":"0",			 客队分数
+
+"totalInvestmentHAD":20.0,		 HAD原始投注额	
+
+"investHAD":44.58,			 HAD投注额
+	
+"totalPriceHAD":0.0,			 HAD返奖金额
+
+"payoutRateHAD":-100.0,			 HAD盈利率
+
+"winpriceHAD":0.0,	          	 HAD中奖额
+
+"averageHAD":0.0,			 HAD平均固定中奖金额
+
+"totalInvestmentHHAD":0.0,
+
+"investHHAD":0.0,
+
+"totalPriceHHAD":0.0,
+
+"payoutRateHHAD":0.0,
+
+"winpriceHHAD":0.0,
+
+"averageHHAD":0.0,
+
+"totalInvestmentHAFU":0.0,
+
+"investHAFU":0.0,
+
+"totalPriceHAFU":0.0,
+
+"payoutRateHAFU":0.0,
+
+"winpriceHAFU":0.0,
+
+"averageHAFU":0.0,
+
+"totalInvestmentTTG":0.0,
+
+"investTTG":0.0,
+
+"totalPriceTTG":0.0,
+
+"payoutRateTTG":0.0,
+
+"winpriceTTG":0.0,
+
+"averageTTG":0.0,
+
+"totalInvestmentCRS":20.0,
+
+"investCRS":25.0,
+
+"totalPriceCRS":0.0,
+
+"payoutRateCRS":-100.0,
+
+"winpriceCRS":0.0,
+
+"averageCRS":0.0},
+
+2 导出excel接口
+
+http://192.168.1.5:8083/account/detailSGL/detailSGLExcel?year=&month=&day=
+
+返回结果如下
+
+{"result":
+
+      {"resultCode":0,
+
+      "resultMsg":null},
+
+ "data":null
+
+}
+
+可能结果如下
+
+resultCode=0   resultMsg ="fail"
+
+resultCode=1   resultMsg ="success"
+
+
+--------finance接口：
+
+1查询接口
+
+http://192.168.1.5:8083/account/dailyFinancialStatements/queryAll?year=2017&month=6&day=5
+
+返回的json大致如下
+
+今日 column1 代表今日时间  column2 代表场次
+
+{"modelToday":
+
+{"column1":"2017-6-5",
+
+"column2":0,
+
+"product":null,
+
+"totalInvestment":0.0,
+
+"invest":0.0,
+
+"totalPrice":0.0,
+
+"payoutRate":0.0,
+
+"totalInvestmentAllup":0.0,
+
+"investAllup":0.0,
+
+"totalPriceAllup":0.0,
+
+"payoutRateAllup":0.0,
+
+"totalInvestmentFsgl":0.0,
+
+"investFsgl":0.0,
+
+"totalPriceFsgl":0.0,
+
+"payoutRateFsgl":0.0,
+
+"winpriceFsgl":0.0,
+
+"averageFsgl":0.0,
+
+"totalInvestmentLevel0":0.0,
+
+"investLevel0":0.0,
+
+"totalPriceLevel0":0.0,
+
+"payoutRateLevel0":0.0},
+
+一月到十二月  column1 代表月份 column2 代表场次
+
+"modelList":
+
+[{"column1":"1", 			月份
+
+"column2":0,	  			场次
+
+"product":null,				无意义
+
+"totalInvestment":0.0,			合计原始投注额
+
+"invest":0.0,				合计交易额
+
+"totalPrice":0.0,			合计中奖额
+
+"payoutRate":0.0,			合计盈利率
+
+"totalInvestmentAllup":0.0,      	串关原始投注额
+
+"investAllup":0.0,			串关交易额
+
+"totalPriceAllup":0.0,			串关中奖额
+
+"payoutRateAllup":0.0,			串关盈利率
+
+"totalInvestmentFsgl":0.0,		单关原始投注额
+
+"investFsgl":0.0,			单关交易额
+
+"totalPriceFsgl":0.0,			单关中奖额
+
+"payoutRateFsgl":0.0,			单关盈利率
+
+"winpriceFsgl":0.0,			无意义
+
+"averageFsgl":0.0,			无意义
+
+"totalInvestmentLevel0":0.0		0关原始投注额
+
+,"investLevel0":0.0,			0关交易额
+
+"totalPriceLevel0":0.0,			0关中奖额
+
+"payoutRateLevel0":0.0},		0关盈利率
+
+.................省略 2到12月份json 
+
+合计为 （1至12月合计）位于页面底层
+
+"total":
+
+{"column1":null,
+
+"column2":10,
+
+"product":null,
+
+"totalInvestment":1600.0,
+
+"invest":2772.99,
+
+"totalPrice":15447.0,
+
+"payoutRate":457.052,
+
+"totalInvestmentAllup":840.0,
+
+"investAllup":1592.24,
+
+"totalPriceAllup":15125.0,
+
+"payoutRateAllup":849.92,
+
+"totalInvestmentFsgl":760.0,
+
+"investFsgl":1180.75,
+
+"totalPriceFsgl":322.0,
+
+"payoutRateFsgl":-72.729,
+
+"winpriceFsgl":0.0,
+
+"averageFsgl":0.0,
+
+"totalInvestmentLevel0":0.0,
+
+"investLevel0":0.0,
+
+"totalPriceLevel0":0.0,
+
+"payoutRateLevel0":0.0}],
+
+##本周截止到今日
+
+"modelWeek":
+
+{"column1":null,
+
+"column2":0,
+
+"product":null,
+
+"totalInvestment":0.0,
+
+"invest":0.0,
+
+"totalPrice":0.0,
+
+"payoutRate":0.0,
+
+"totalInvestmentAllup":0.0,
+
+"investAllup":0.0,
+
+"totalPriceAllup":0.0,
+
+"payoutRateAllup":0.0,
+
+"totalInvestmentFsgl":0.0,
+
+"investFsgl":0.0,
+
+"totalPriceFsgl":0.0,
+
+"payoutRateFsgl":0.0,
+
+"winpriceFsgl":0.0,
+
+"averageFsgl":0.0,
+
+"totalInvestmentLevel0":0.0,
+
+"investLevel0":0.0,
+
+"totalPriceLevel0":0.0,
+
+"payoutRateLevel0":0.0},
+
+##本年截止到今日
+
+"modelYear":
+
+{"column1":null,
+
+"column2":10,
+
+"product":null,
+
+"totalInvestment":1600.0,
+
+"invest":2772.99,
+
+"totalPrice":15447.0,
+
+"payoutRate":457.052,
+
+"totalInvestmentAllup":840.0,
+
+"investAllup":1592.24,
+
+"totalPriceAllup":15125.0
+
+,"payoutRateAllup":849.92,
+
+"totalInvestmentFsgl":760.0,
+
+"investFsgl":1180.75,
+
+"totalPriceFsgl":322.0,
+
+"payoutRateFsgl":-72.729,
+
+"winpriceFsgl":0.0,
+
+"averageFsgl":0.0,
+
+"totalInvestmentLevel0":0.0,
+
+"investLevel0":0.0,
+
+"totalPriceLevel0":0.0,
+
+"payoutRateLevel0":0.0},
+
+##本月截止到今日
+
+"modelMonth":{
+
+"column1":null,
+
+"column2":9,
+
+"product":null,
+
+"totalInvestment":1600.0,
+
+"invest":2772.99,
+
+"totalPrice":15447.0,
+
+"payoutRate":457.052,
+
+"totalInvestmentAllup":840.0,
+
+"investAllup":1592.24,
+
+"totalPriceAllup":15125.0,
+
+"payoutRateAllup":849.92,
+
+"totalInvestmentFsgl":760.0,
+
+"investFsgl":1180.75,
+
+"totalPriceFsgl":322.0,
+
+"payoutRateFsgl":-72.729,
+
+"winpriceFsgl":0.0,
+
+"averageFsgl":0.0,
+
+"totalInvestmentLevel0":0.0,
+
+"investLevel0":0.0,
+
+"totalPriceLevel0":0.0,
+
+"payoutRateLevel0":0.0}}
+
+2 导出excel接口
+
+http://192.168.1.5:8083/account/dailyFinancialStatements/summaryExcel?year=2017&month=6&day=5
+
+返回结果如下
+
+{"result":
+      {"resultCode":0,
+      "resultMsg":null},
+ "data":null
+}
+
+可能结果如下
+
+resultCode=0   resultMsg ="fail"
+
+resultCode=1   resultMsg ="success"
+
+
+--------该需求 由大伟哥提出  
+
+1 根据起止时间 查询渠道商 的票信息
+
+2 根据tid 查询 渠道商 票信息
+
+
+3 页面要求
+
+多条件查询  条件有：	
+
+	渠道编号（下拉框内 展示所有渠道）
+
+	交易开始时间 startDate
+	
+	交易结束时间 endDate
+
+	Page 页数 （每页100 行）
+
+	Page 下拉框 形式同上 
+
+4.查询接口
+
+http://192.168.1.5:8083/account/orderTicket/queryAll?agentid=111&startDate=2017-6-7&endDate=2017-6-8&page=1
+
+5.单条件查询 查询参数 tid 
+
+http://192.168.1.5:8083/account/orderTicket/query?tkId=79855568&agentid=111
+
+http://192.168.1.5:8083/account/orderTicket/query?tkId=79855568&agentid=110  //ticketResult	"该渠道未开发此接口"
+
+渠道查询
+http://192.168.1.5:8083/account/orderTicket/queryAllAgent
+
+--------dailysummary 简单介绍
+
+
+月份财务报表 通过order_ticket_detail 中的payouttime（派奖时间）查询inv_allup（totalInvestment原始投注额）、price_allup（invest交易额） total_price（totalPrice中间额）
+
+payoutRate((totalPrice - invest) / invest * 100盈利率)（计算而来）
+
+场次数量 通过 查询matches_info 表的count（mid）
+
+2接口
+
+1.查询
+
+http://192.168.1.5:8083/account/dailyCollectStatements/queryAll?year=2017&month=6
+
+由于是月份统计 参数只有year month
+
+返回结果
+
+{"1":{"Weektotal": 本周合计
+
+{"week":null,
+
+"totalNum":9,           	合计场次数量
+
+"totalInvestment":720.0,合计原始投注额
+
+"invest":1158.55,			合计交易额
+
+"totalPrice":322.0,			合计中奖额
+
+"payoutRate":-72.207,		合计盈利率
+
+"fbNum":9,						足球Fb
+
+"totalInvestmentFb":720.0,
+
+"investFb":1158.55,
+
+"totalPriceFb":322.0,
+
+"payoutRateFb":-72.207,
+
+"bkNum":null,						篮球bk
+
+"totalInvestmentBk":null,
+
+"investBk":null,
+
+"totalPriceBk":null,
+
+"payoutRateBk":null},
+
+"title":					。。。。  用于字段标题。。。。。。。。。。
+
+{"week":"第1周",
+
+"totalNum":"场次数量NO. Match",
+
+"totalInvestment":"原始投注额TotalInvestment人民币RMB",
+
+"invest":"交易额investment人民币RMB",
+
+"totalPrice":"中间额Payout人民币RMB",
+
+"payoutRate":"payoutRatio%",
+
+"fbNum":"场次数量NO. Match",
+
+"totalInvestmentFb":"原始投注额TotalInvestment人民币RMB",
+
+"investFb":"交易额investment人民币RMB",
+
+"totalPriceFb":"中间额Payout人民币RMB",
+
+"payoutRateFb":"payoutRatio%",
+
+"bkNum":"场次数量NO. Match",
+
+"totalInvestmentBk":"原始投注额TotalInvestment人民币RMB",
+
+"investBk":"交易额investment人民币RMB",
+
+"totalPriceBk":"中间额Payout人民币RMB",
+
+"payoutRateBk":"payoutRatio%"
+
+},
+
+
+"weekList":
+
+[{"week":"2017-06-01 : Thu",
+
+"totalNum":2,
+
+"totalInvestment":0.0,
+
+"invest":0.0,"totalPrice":0.0,
+
+"payoutRate":0.0,
+
+"fbNum":2,
+
+"totalInvestmentFb":0.0,
+
+"investFb":0.0,
+
+"totalPriceFb":0.0,
+
+"payoutRateFb":0.0,
+
+"bkNum":null,
+
+"totalInvestmentBk":null,
+
+"investBk":null,
+
+"totalPriceBk":null,
+
+"payoutRateBk":null},
+
+。。。。。。。。。省略之后日期
+
+"monthTotal":   本月合计
+
+{"week":"本月合计",
+
+"totalNum":27,
+
+"totalInvestment":2880.0,
+
+"invest":5603.24,
+
+"totalPrice":1522.0,
+
+"payoutRate":-72.837,
+
+"fbNum":27,
+
+"totalInvestmentFb":2880.0,
+
+"investFb":5603.24,
+
+"totalPriceFb":1522.0,
+
+"payoutRateFb":-72.837,
+
+"bkNum":null,
+
+"totalInvestmentBk":null,
+
+"investBk":null,
+
+"totalPriceBk":null,
+
+"payoutRateBk":null}}
+
+
+2 导出excel接口
+
+http://192.168.1.209:8083/account/dailyCollectStatements/dailySummaryExcel?year=2017&month=2
+
+返回结果
+
+{"result":
+
+      {"resultCode":0,
+
+      "resultMsg":null},
+
+ "data":null
+
+}
+
+可能结果如下
+
+resultCode=0   resultMsg ="fail"
+
+resultCode=1   resultMsg ="success"
+
+--------user
+
+1 查询接口 （多条件查询）
+
+http://192.168.1.209:8083/account/orderManage/queryAll?startDate=2017-6-7&endDate=2017-6-8&agentNum=101&page=1&size=10&tradeType=1&state=1&recycleState=1&inplay=0
+
+传递后台参数赋值 及 代表含义
+
+其中
+
+agentNum 	代表 渠道       赋值时 为对应渠道的渠道编号 
+
+inplay 		代表 订单类型   赋值时 0：死球；1：即场
+
+state 		代表 订单状态   赋值时 1：中奖；2：未中奖；3：Alive
+
+tradeType 	代表 交易类型   赋值时 1：交易成功；2：交易失败
+
+recycleState	代表 第三方状态 赋值时 0：表示未回收；1：表示已回收
+	
+
+当不选取下拉框的下任何值时 默认为all状态
+
+当每个下拉框框 出现all状态 该下拉框 所需传的参数 为null即可
+
+返回json如下
+
+合计
+
+{"total":
+
+{"page":null,
+
+"size":null,
+
+"orderId":null,
+
+"ticketInfoId":null,
+
+"agentId":null,
+
+"tradeTime":null,
+
+"tradePrice":448.44,				交易金额
+
+"tradeType":null,
+
+"state":null,
+
+"recycleState":null,
+
+"recyclePrice":0.0,				回收金额
+
+"winMoney":0.0,					
+
+"tkId":null,
+
+"requestTimestamp":null,
+
+"startDate":null,
+
+"endDate":null,
+
+"uid":"1",					用户id
+
+"agentName":null,
+
+"agentCode":null,
+
+"inplay":null,
+
+"totalPrice":null,				中奖金额
+
+"bettingproducts":null,
+
+"investmentNum":null,
+
+"totalInvestment":0,				金额
+
+"addAwardAmount":null,
+
+"agentNum":null,
+
+"payoutrate":-100.0,				盈利率
+
+"ballType":null},
+
+"List":
+
+[{"page":null,
+
+"size":null,
+
+"orderId":105,
+
+"ticketInfoId":"105",			
+
+"agentId":101,					
+
+"tradeTime":"2017-06-08 17:57:08",		交易时间
+
+"tradePrice":60.67,				交易金额
+
+"tradeType":1,					交易状态 1：交易成功；2：交易失败
+
+"state":2,					订单状态1：中奖；2：未中奖；3：Alive
+
+"recycleState":1,				第三方状态0表示未回收；1表示已回收
+
+"recyclePrice":0.0,				回收金额
+
+"winMoney":null,				最大中奖
+
+"tkId":"20s0sd1",				订单ID
+
+"requestTimestamp":null,
+
+"startDate":null,
+
+"endDate":null,
+
+"uid":"120"					用户id
+
+"agentName":"101_CC",				渠道名称
+
+"agentCode":null,
+
+"inplay":0,					订单类型 0：死球；1：即场				"totalPrice":270.0,				中奖金额
+
+"bettingproducts":"HAD",			玩法
+
+"investmentNum":null,						
+
+"totalInvestment":20,				金额
+
+"addAwardAmount":0,
+
+"agentNum":null,
+
+"payoutrate":null,
+
+"ballType":1},					彩种 1竞彩足球 2篮球
+
+ 后台返回的 均为数字 需前台判断后 显示
+
+点击详情接口
+
+http://192.168.1.209:8083/account/orderManage/queryDetail?ticketInfoId=232
+
+//local_m 关数
+
+//total_price 中奖金额
+
+//inv_allup 倍数
+
+//price_allup 交易额
+
+//status 状态（序号）
+
+//product 玩法
+[{
+"local_m":2,
+"total_price":97.12,
+"sid":1239,
+"tid":232,
+"inv_allup":10.0,
+"price_allup":20.43,
+"status":1,
+"alive_m":0,
+"product":"FCA",
+"payouttime":"2017-06-21 14:58:15.0",
+"investInfo":"HAD 3001 * [爱媛FC vs 赞岐釜玉] 2@5.559 (5.0)  [0-0]  / TTG 3002 * [町田泽维 vs 大分三神] 2@4.272 (5.0)  [0-0]  / "
+}]
+
+//未中奖回收
+http://192.168.1.209:8083/account/orderManage/updateNotWinning?startDate=2017-6-7&endDate=2017-6-21。。。。。。参数和查询一致
+
+返回结果如下
+{"result":
+      {"resultCode":0,
+      "resultMsg":null},
+ "data":null
+}
+可能结果如下
+resultCode=0   resultMsg ="fail"
+resultCode=1   resultMsg ="success"
+//手动回收
+http://192.168.1.209:8083/account/orderManage/updateRecycleMoney?orderId=
+返回结果如下
+{"result":
+      {"resultCode":0,
+      "resultMsg":null},
+ "data":null
+}
+可能结果如下
+resultCode=0   resultMsg ="fail"
+resultCode=1   resultMsg ="success"
+
+取消申请的 确定接口
+http://192.168.1.209:8083/account/orderManage/deleteAlive?ticketInfoId=244&orderId=244
+
+返回结果如下
+{"result":
+      {"resultCode":0,
+      "resultMsg":null},
+ "data":null
+}
+可能结果如下
+resultCode=0   resultMsg ="fail"
+resultCode=1   resultMsg ="success"
+
+取消申请的 拒绝接口
+http://192.168.1.209:8083/account/orderManage/updateCancel?ticketInfoId=244&orderId=244
+
+返回结果如下
+{"result":
+      {"resultCode":0,
+      "resultMsg":null},
+ "data":null
+}
+可能结果如下
+resultCode=0   resultMsg ="fail"
+resultCode=1   resultMsg ="success"
+
+--------页面新接口：
+1 daily all up
+
+http://192.168.1.5:8083/account/dailyAllup/list
+
+2 daily summary 
+
+http://192.168.1.5:8083/account/dailyCollectStatements/list
+
+3 summary 
+
+http://192.168.1.5:8083/account/dailyFinancialStatements/list
+
+4 single
+
+http://192.168.1.5:8083/account/detailSGL/list
+
+5 break down
+
+http://192.168.1.5:8083/account/dailyFinancialDetail/list
+
+6 渠道
+
+http://192.168.1.5:8083/account/channelStatistics/list
+
+7 错误票
+
+http://192.168.1.5:8083/account/errorTicket/list
+
+8 thrid
+
+http://192.168.1.5:8083/account/orderTicket/list
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

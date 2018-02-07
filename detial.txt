@@ -1,0 +1,54 @@
+[
+    {
+        "local_m":2,
+        "total_price":97.12,
+        "sid":1239,
+        "tid":232,
+        "inv_allup":10,
+        "price_allup":20.43,
+        "status":1,
+        "alive_m":0,
+        "product":"FCA",
+        "payouttime":"2017-06-21 14:58:15.0",
+        "investInfo":"HAD 3001 * [爱媛FC vs 赞岐釜玉] 2@5.559 (5.0) [0-0] / TTG 3002 * [町田泽维 vs 大分三神] 2@4.272 (5.0) [0-0] "
+    },
+    {
+        "local_m":2,
+        "total_price":97.12,
+        "sid":1240,
+        "tid":232,
+        "inv_allup":10,
+        "price_allup":7.48,
+        "status":1,
+        "alive_m":0,
+        "product":"FCA",
+        "payouttime":"2017-06-21 14:58:23.0",
+        "investInfo":"HAD 3001 * [爱媛FC vs 赞岐釜玉] 2@5.559 (5.0) [0-0] / CRS 3003 * [千叶市原 vs 东京绿茵] 2-1@11.663 (5.0) [0-0] "
+    },
+    {
+        "local_m":2,
+        "total_price":485.6,
+        "sid":1241,
+        "tid":232,
+        "inv_allup":10,
+        "price_allup":9.74,
+        "status":1,
+        "alive_m":0,
+        "product":"FCA",
+        "payouttime":"2017-06-21 14:58:23.0",
+        "investInfo":"TTG 3002 * [町田泽维 vs 大分三神] 2@4.272 (5.0) [0-0] / CRS 3003 * [千叶市原 vs 东京绿茵] 2-1@11.663 (5.0) [0-0] "
+    },
+    {
+        "local_m":3,
+        "total_price":485.12,
+        "sid":1242,
+        "tid":232,
+        "inv_allup":10,
+        "price_allup":8.75,
+        "status":1,
+        "alive_m":0,
+        "product":"FCA",
+        "payouttime":"2017-06-21 14:58:23.0",
+        "investInfo":"HAD 3001 * [爱媛FC vs 赞岐釜玉] 2@5.559 (5.0) [0-0] / TTG 3002 * [町田泽维 vs 大分三神] 2@4.272 (5.0) [0-0] / CRS 3003 * [千叶市原 vs 东京绿茵] 2-1@11.663 (5.0) [0-0] "
+    }
+]

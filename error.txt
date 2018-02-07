@@ -1,0 +1,82 @@
+{
+    "ticketResult":[
+        {
+            "id":15,
+            "tkId":"y20Y1",
+            "tradeState":1,
+            "agentId":101,
+            "tradeTime":"2017-05-22 11:30:20",
+            "tradePrice":2,
+            "recyclePrice":2,
+            "winMoney":2,
+            "state":1,
+            "queryTime":null,
+            "requestTimestamp":null
+        },
+        {
+            "id":16,
+            "tkId":"2ki01",
+            "tradeState":1,
+            "agentId":102,
+            "tradeTime":"2017-05-22 15:37:53",
+            "tradePrice":13.33,
+            "recyclePrice":0,
+            "winMoney":0,
+            "state":0,
+            "queryTime":null,
+            "requestTimestamp":null
+        },
+        {
+            "id":17,
+            "tkId":"yy01",
+            "tradeState":5,
+            "agentId":103,
+            "tradeTime":"2017-05-22 16:13:38",
+            "tradePrice":20,
+            "recyclePrice":0,
+            "winMoney":0,
+            "state":0,
+            "queryTime":null,
+            "requestTimestamp":null
+        },
+        {
+            "id":18,
+            "tkId":"yy02",
+            "tradeState":5,
+            "agentId":103,
+            "tradeTime":"2017-05-22 16:29:00",
+            "tradePrice":20,
+            "recyclePrice":0,
+            "winMoney":0,
+            "state":0,
+            "queryTime":null,
+            "requestTimestamp":null
+        },
+        {
+            "id":19,
+            "tkId":"yy03",
+            "tradeState":6,
+            "agentId":103,
+            "tradeTime":"2017-05-22 16:39:21",
+            "tradePrice":20,
+            "recyclePrice":0,
+            "winMoney":0,
+            "state":1,
+            "queryTime":null,
+            "requestTimestamp":null
+        },
+        {
+            "id":20,
+            "tkId":"yy04",
+            "tradeState":5,
+            "agentId":103,
+            "tradeTime":"2017-05-22 16:42:30",
+            "tradePrice":20,
+            "recyclePrice":0,
+            "winMoney":0,
+            "state":1,
+            "queryTime":null,
+            "requestTimestamp":null
+        }
+    ]
+}

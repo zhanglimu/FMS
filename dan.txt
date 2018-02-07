@@ -1,0 +1,10 @@
+{
+    "ticketResult":{
+        "tkId":"79027307",
+        "schemeState":5,
+        "tradeTime":"2017-06-02 00:03:28",
+        "tradePrice":20.89,
+        "winMoney":7.29，
+        "agentid":111
+    }
+}

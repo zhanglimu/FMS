@@ -1,0 +1,34 @@
+{
+    "modelList":
+        {
+            "page":null,
+            "size":null,
+            "orderId":96,
+            "ticketInfoId":"96",
+            "agentId":101,
+            "tradeTime":"2017-06-07 18:33:52",
+            "tradePrice":27.2,
+            "tradeType":7,
+            "state":2,
+            "recycleState":1,
+            "recyclePrice":0,
+            "winMoney":null,
+            "tkId":"CC2700706063009",
+            "requestTimestamp":null,
+            "startDate":null,
+            "endDate":null,
+            "uid":"120",
+            "agentName":"101_CC",
+            "agentCode":null,
+            "inplay":0,
+            "totalPrice":170,
+            "bettingproducts":"HHAD",
+            "investmentNum":null,
+            "totalInvestment":20,
+            "addAwardAmount":0,
+            "agentNum":null,
+            "payoutrate":null,
+            "ballType":1,
+        	"rakeRate":0
+        }
+}
